@@ -72,7 +72,7 @@ export function useTasks(): UseTasksState {
         const normalized: Task[] = normalizeTasks(data);
         let finalData = normalized.length > 0 ? normalized : generateSalesTasks(50);
 
-        // Fixed Bug 3: Removed unnecessary sort() call - proper sorting happens in derivedSorted
+        // Fixed Bug 3
 
         if (isMounted) setTasks(finalData);
       } catch (e: any) {
