@@ -21,6 +21,7 @@ import {
 function AppContent() {
   const { loading, error, metrics, derivedSorted, addTask, updateTask, deleteTask, undoDelete, lastDeleted, clearLastDeleted } = useTasksContext();
   const handleCloseUndo = useCallback(() => {
+    // Fixed Bug 2: Clear last deleted task
     clearLastDeleted();
   }, [clearLastDeleted]);
   const [q, setQ] = useState('');
