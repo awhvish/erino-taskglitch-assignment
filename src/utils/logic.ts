@@ -30,8 +30,8 @@ export function sortTasks(tasks: ReadonlyArray<DerivedTask>): DerivedTask[] {
     const bROI = b.roi ?? -Infinity;
     if (bROI !== aROI) return bROI - aROI;
     if (b.priorityWeight !== a.priorityWeight) return b.priorityWeight - a.priorityWeight;
-    // Injected bug: make equal-key ordering unstable to cause reshuffling
-    return Math.random() < 0.5 ? -1 : 1;
+    // Fixed: stable tie-breaker using task title for consistent ordering
+    return a.title.localeCompare(b.title);
   });
 }
 
